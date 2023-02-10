@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Joke Generator</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Oswald:wght@200&family=Poppins:wght@500&display=swap");
+
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        background: #fabe2e;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        flex-direction: row;
+        height: 100vh;
+      }
+      .cont {
+        background: #ffffff;
+        position: relative;
+        width: 20rem;
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: row;
+        justify-content: center;
+        border: none;
+        border-radius: 4px;
+        box-shadow: 0 0 3px #414141, 0 0 6px #414141, 0 0 9px #414141;
+      }
+      .cont .icon {
+        text-align: center;
+        font-size: 4rem;
+        padding: 10px;
+      }
+      .cont .joke {
+        display: flex;
+        justify-content: center;
+        font-family: "Poppins", cursive, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 20px;
+        flex-wrap: wrap;
+        flex-direction: row;
+      }
+      .cont .btn {
+        background: #fabe2e;
+        border: none;
+        outline: none;
+        margin: 10px;
+        font-family: "Poppins", cursive, sans-serif;
+        font-size: 20px;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 10px;
+        box-shadow: 0 0 2px #414141, 0 0 4px #414141, 0 0 6px #414141;
+        border-radius: 4px;
+      }
+      .const .btn:active {
+        scale: 0.75;
+        /* transition: all 0. */
+      }
+    </style>
+  </head>
+  <body>
+    <div class="cont">
+      <div class="icon">&#128514;</div>
+      <div class="joke">Hello User Click on Generate</div>
+      <button type="submit" class="btn" onclick="generateJoke()">
+        Generate
+      </button>
+    </div>
+    <script>
+      let joke = document.querySelector(".joke");
+      function generateJoke() {
+        fetch("https://v2.jokeapi.dev/joke/Any?type=single")
+          .then((data) => data.json())
+          .then((getjoke) => (joke.innerHTML = getjoke.joke));
+      }
+    </script>
+  </body>
+</html>
